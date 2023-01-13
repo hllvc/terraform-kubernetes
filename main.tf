@@ -1,33 +1,33 @@
-resource "kubernetes_ingress" "demo_ingress" {
-  metadata {
-    name = "demo-ingress"
-  }
-
-  spec {
-    backend {
-      service_name = "myapp-1"
-      service_port = 8080
-    }
-
-    rule {
-      http {
-        path {
-          backend {
-            service_name = "myapp-1"
-            service_port = 8080
-          }
-
-          path = "/app1/*"
-        }
-
-      }
-    }
-
-    tls {
-      secret_name = "tls-secret"
-    }
-  }
-}
+# resource "kubernetes_ingress" "demo_ingress" {
+#   metadata {
+#     name = "demo-ingress"
+#   }
+#
+#   spec {
+#     backend {
+#       service_name = "myapp-1"
+#       service_port = 8080
+#     }
+#
+#     rule {
+#       http {
+#         path {
+#           backend {
+#             service_name = "myapp-1"
+#             service_port = 8080
+#           }
+#
+#           path = "/app1/*"
+#         }
+#
+#       }
+#     }
+#
+#     tls {
+#       secret_name = "tls-secret"
+#     }
+#   }
+# }
 
 resource "kubernetes_service_v1" "demo" {
   metadata {
@@ -43,7 +43,7 @@ resource "kubernetes_service_v1" "demo" {
       target_port = 80
     }
 
-    type = "NodePort"
+    type = "ClusterIP"
   }
 }
 
