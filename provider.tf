@@ -1,6 +1,6 @@
 # Configure the Kubernetes Provider
 provider "kubernetes" {
-  host = "${var.cluster_endpoint}"
+  host = var.cluster_endpoint
 
   client_certificate     = var.client_certificate
   client_key             = var.client_key
